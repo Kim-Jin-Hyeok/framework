@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+	<package name="bit" extends="struts-default">
+		<action name="home" class="com.bit.BbsAction">
+			<result>/home.jsp</result>
+		</action>
+		<action name="intro" class="com.bit.BbsAction">
+			<result>/intro.jsp</result>
+		</action>
+	</package>
+	<package name="bbs" namespace="/bbs" extends="bit">
+		<action name="list" class="com.bit.BbsAction" method="list">
+			<result>/bbs/list.jsp</result>
+		</action>
+		<action name="add" class="com.bit.BbsAction">
+			<result>/bbs/add.jsp</result>
+		</action>
+		<action name="insert" class="com.bit.BbsAction" method="insert">
+			<result type="redirectAction">list</result>
+		</action>
+		<action name="detail" class="com.bit.BbsAction" method="detail">
+			<result>/bbs/edit.jsp</result>
+		</action>
+		<action name="delete" class="com.bit.BbsAciton" method="delete">
+			<result type="redirect">
+				<param name="bean.sabun">${bean.sabun}</param>
+				<param name="actionName">detail</param>
+			</result>
+		</action>
+	</package>
+</struts>
